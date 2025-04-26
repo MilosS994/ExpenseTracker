@@ -4,6 +4,25 @@
 /* Tailwind CSS */
 @import "tailwindcss";
 
-body {
-  font-family: "Montserrat", sans-serif;
+@theme {
+  /* Custom colors */
+  --color-primary: #c5baff;
+  --color-secondary: #c4d9ff;
+  --color-tertiary: #e8f9ff;
+  --color-white: #fbfbfb;
+  --color-black: #212121;
+
+  /* Font */
+  --font-montserrat: "Montserrat", sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-montserrat);
+  }
+
+  body {
+    color: var(--color-black);
+    background-color: var(--color-white);
+  }
 }
