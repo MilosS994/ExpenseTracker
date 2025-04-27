@@ -56,7 +56,7 @@ const Signin = () => {
   return (
     <AuthLayout>
       <div className="h-full flex flex-col justify-center md:h-full lg-[w-70%]">
-        <h3 className="text-xl text-black font-medium md:text-2xl lg:text-3xl xl:text-4xl cursor-default">
+        <h3 className="text-xl text-shadow-md text-black font-medium md:text-2xl lg:text-3xl xl:text-4xl cursor-default">
           Welcome back
         </h3>
         <p className="text-xs text-black font-light mt-2 mb-6 md:text-sm lg:text-base xl:text-lg cursor-default">
@@ -130,7 +130,7 @@ const Signin = () => {
             </div>
 
             <button
-              className="text-xs bg-secondary text-white font-semibold py-2 rounded-md hover:bg-primary transition duration-200 cursor-pointer md:text-sm lg:text-base"
+              className="text-xs bg-secondary text-white font-semibold py-2 mt-1 rounded-md shadow-sm hover:bg-primary transition duration-200 cursor-pointer md:text-sm lg:text-base"
               type="submit"
             >
               Sign in
