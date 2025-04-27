@@ -64,6 +64,7 @@ const Signin = () => {
         </p>
         <div>
           <form className="flex flex-col gap-4" onSubmit={handleLogin}>
+            {/* Email */}
             <div className="flex flex-col gap-1">
               <label
                 htmlFor="email"
@@ -77,7 +78,7 @@ const Signin = () => {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="youremail@mail.com"
+                placeholder="johndoe@email.com"
                 autoFocus
                 className={`text-xs border border-gray-300 bg-neutral-100 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-tertiary md:text-sm lg:text-base ${
                   error?.toLowerCase().includes("email")
@@ -91,6 +92,7 @@ const Signin = () => {
                 </p>
               )}
             </div>
+            {/* Password */}
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-4">
                 <label
