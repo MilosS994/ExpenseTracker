@@ -74,7 +74,7 @@ const Signin = () => {
                 Email
               </label>
               <input
-                type="email"
+                type="text"
                 name="email"
                 id="email"
                 value={email}
