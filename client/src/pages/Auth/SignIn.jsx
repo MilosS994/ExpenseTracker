@@ -79,7 +79,7 @@ const Signin = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="youremail@mail.com"
                 autoFocus
-                className={`text-xs border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-tertiary md:text-sm lg:text-base ${
+                className={`text-xs border border-gray-300 bg-neutral-100 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-tertiary md:text-sm lg:text-base ${
                   error?.toLowerCase().includes("email")
                     ? "border-2 border-red-300"
                     : ""
@@ -115,7 +115,7 @@ const Signin = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="•••••••••"
-                className={`text-xs border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-tertiary md:text-sm lg:text-base ${
+                className={`text-xs border border-gray-300 bg-neutral-100 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-tertiary md:text-sm lg:text-base ${
                   error?.toLowerCase().includes("password")
                     ? "border-2 border-red-300"
                     : ""
