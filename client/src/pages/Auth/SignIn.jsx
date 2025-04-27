@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 // React icons
 import { IoEye } from "react-icons/io5";
+import { IoEyeOff } from "react-icons/io5";
 // Layout component
 import AuthLayout from "../../components/layouts/AuthLayout";
 // Utils
@@ -101,13 +102,19 @@ const Signin = () => {
                 >
                   Password
                 </label>
-                <IoEye
-                  className={`text-sm md:text-base lg:text-lg cursor-pointer hover:text-gray-700 transition duration-200 ${
-                    showPassword ? "text-primary" : ""
-                  }`}
-                  title={showPassword ? "Hide password" : "Show password"}
-                  onClick={togglePasswordVisibility}
-                />
+                {showPassword ? (
+                  <IoEyeOff
+                    className="text-sm md:text-base lg:text-lg cursor-pointer hover:text-gray-700 transition duration-200 "
+                    title={showPassword ? "Hide password" : "Show password"}
+                    onClick={togglePasswordVisibility}
+                  />
+                ) : (
+                  <IoEye
+                    className="text-sm md:text-base lg:text-lg cursor-pointer hover:text-gray-700 transition duration-200 "
+                    title={showPassword ? "Hide password" : "Show password"}
+                    onClick={togglePasswordVisibility}
+                  />
+                )}
               </div>
 
               <input
