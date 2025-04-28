@@ -32,6 +32,8 @@ const Signup = () => {
     e.preventDefault();
     setError(null);
 
+    let profileImageUrl = "";
+
     if (fullName.trim() === "") {
       setError("Full name is required");
       return;
