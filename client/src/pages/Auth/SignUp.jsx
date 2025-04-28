@@ -132,7 +132,7 @@ const Signup = () => {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="youremail@mail.com"
+                placeholder="johndoe@email.com"
                 autoFocus
                 className={`text-xs border border-gray-300 bg-neutral-100 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-tertiary md:text-sm lg:text-base ${
                   error?.toLowerCase().includes("email")
@@ -240,6 +240,15 @@ const Signup = () => {
               Sign up
             </button>
           </form>
+          <p className="text-xs mt-2 md:text-sm lg:text-base lg:mt-4 font-light text-black cursor-default">
+            Already have an account?{" "}
+            <Link
+              className="text-primary font-semibold cursor-pointer hover:underline decoration-1 decoration-primary underline-offset-4"
+              to="/signin"
+            >
+              Sign in
+            </Link>
+          </p>
         </div>
       </div>
     </AuthLayout>
