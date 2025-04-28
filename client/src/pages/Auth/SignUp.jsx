@@ -160,12 +160,14 @@ const Signup = () => {
                     className="text-sm md:text-base lg:text-lg cursor-pointer hover:text-gray-700 transition duration-200 "
                     title={showPassword ? "Hide password" : "Show password"}
                     onClick={togglePasswordVisibility}
+                    aria-label="Hide password"
                   />
                 ) : (
                   <IoEye
                     className="text-sm md:text-base lg:text-lg cursor-pointer hover:text-gray-700 transition duration-200 "
                     title={showPassword ? "Hide password" : "Show password"}
                     onClick={togglePasswordVisibility}
+                    aria-label="Show password"
                   />
                 )}
               </div>
