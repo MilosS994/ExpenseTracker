@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "budget-pal-server",
   "version": "1.0.0",
   "main": "server.js",
   "type": "module",
@@ -18,14 +18,16 @@
   ],
   "author": "Milos Srejic",
   "license": "ISC",
-  "description": "",
+  "description": "Application server for BudgetPal, a personal finance management app.",
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.14.0"
+    "mongoose": "^8.14.0",
+    "multer": "^1.4.5-lts.2",
+    "xslx": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
