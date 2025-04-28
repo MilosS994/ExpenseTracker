@@ -44,6 +44,8 @@ const ProfilePhotoSelector = ({ image, setImage }) => {
             type="button"
             className="w-8 h-8 flex items-center justify-center bg-secondary text-white rounded-full absolute -bottom-1 -right-2 cursor-pointer hover:bg-primary transition duration-200"
             onClick={onChooseImage}
+            title="Choose image"
+            aria-label="Choose image"
           >
             <LuUpload />
           </button>
@@ -59,6 +61,8 @@ const ProfilePhotoSelector = ({ image, setImage }) => {
             type="button"
             className="w-8 h-8 flex items-center justify-center bg-red-300 text-white rounded-full absolute -bottom-1 -right-2 cursor-pointer hover:bg-red-400 transition duration-200"
             onClick={handleRemoveImage}
+            title="Remove image"
+            aria-label="Remove image"
           >
             <LuTrash />
           </button>
