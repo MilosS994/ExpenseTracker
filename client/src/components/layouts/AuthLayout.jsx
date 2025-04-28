@@ -9,7 +9,7 @@ import Logo from "../../assets/images/logo.png";
 const AuthLayout = ({ children }) => {
   return (
     <div className="flex bg-gradient-to-r from-white via-tertiary to-white min-h-screen">
-      <div className="w-screen h-screen px-12 pt-8 pb-12 md:w-[60vw] flex flex-col justify-between">
+      <div className="w-screen h-screen px-12 pt-4 pb-12 md:w-[60vw] flex flex-col justify-between">
         <div className="w-24 md:w-32 lg:w-40">
           <img src={Logo} alt="BudgetBuddy" />
         </div>
