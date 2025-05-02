@@ -1,8 +1,16 @@
 import express from "express";
 import cors from "cors";
-
+import path from "path";
+import { fileURLToPath } from "url";
 // MongoDB connection
 import connectDB from "./src/database/mongodb.js";
+// Routes
+import authRoutes from "./src/routes/auth.routes.js";
+// Error handling middleware
+import errorMiddleware from "./src/middlewares/error.middleware.js";
+
+// --------------------------------------------- //
+// CONFIGURATION
 
 const app = express();
 
@@ -18,6 +26,17 @@ app.use(
 
 // Middleware
 app.use(express.json());
+
+// Routes
+app.use("/api/v1/auth", authRoutes);
+
+// Error handling middleware
+app.use(errorMiddleware);
+
+// Server uploads folder
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Port
 const PORT = process.env.PORT || 5500;
