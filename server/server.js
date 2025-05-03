@@ -6,6 +6,8 @@ import { fileURLToPath } from "url";
 import connectDB from "./src/database/mongodb.js";
 // Routes
 import authRoutes from "./src/routes/auth.routes.js";
+import incomeRoutes from "./src/routes/income.routes.js";
+import expenseRoutes from "./src/routes/expense.routes.js";
 // Error handling middleware
 import errorMiddleware from "./src/middlewares/error.middleware.js";
 
@@ -18,7 +20,7 @@ const app = express();
 app.use(
   cors({
     origin: process.env.CLIENT_URL || "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
@@ -29,6 +31,8 @@ app.use(express.json());
 
 // Routes
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/income", incomeRoutes);
+app.use("/api/v1/expense", expenseRoutes);
 
 // Error handling middleware
 app.use(errorMiddleware);
