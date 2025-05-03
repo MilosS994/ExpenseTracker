@@ -114,7 +114,15 @@ export const getUserInfo = async (req, res, next) => {
     res.status(200).json({
       success: true,
       message: "User info retrieved successfully",
-      user,
+      user: {
+        id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        profileImageUrl: user.profileImageUrl,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
+        token: generateToken(user._id),
+      },
     });
   } catch (error) {
     console.error("Error getting user info: ", error.message);
