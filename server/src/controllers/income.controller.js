@@ -1,7 +1,5 @@
 import Income from "../models/income.model.js";
 import xlsx from "xlsx";
-import path from "path";
-import fs from "fs";
 
 // Add income
 export const addIncome = async (req, res, next) => {
