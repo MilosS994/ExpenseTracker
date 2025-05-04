@@ -11,10 +11,9 @@ import AuthLayout from "../../components/layouts/AuthLayout";
 // Utils
 import { validateEmail } from "../../utils/helper.js";
 import axiosInstance from "../../utils/axiosInstance.js";
-// Paths
 import { API_PATHS } from "../../utils/apiPaths.js";
 // userContext
-import { userContext } from "../../context/userContext";
+import { UserContext } from "../../context/UserContext.jsx";
 
 // ---------------------------------------------------------------------------------
 
@@ -26,7 +25,7 @@ const Signin = () => {
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
 
-  const { updateUser } = useContext(userContext);
+  const { updateUser } = useContext(UserContext);
 
   const navigate = useNavigate();
 
