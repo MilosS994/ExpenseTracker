@@ -14,6 +14,9 @@ import Home from "./pages/Dashboard/Home";
 import Income from "./pages/Dashboard/Income";
 import Expense from "./pages/Dashboard/Expense";
 
+// userContext
+import UserProvider from "./context/UserContext";
+
 // ---------------------------------------------------------------------------------
 
 // ROOT COMPONENT
@@ -23,18 +26,20 @@ const Root = () => {};
 // APP COMPONENT
 const App = () => {
   return (
-    <div>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Root />} />
-          <Route path="/signin" element={<SignIn />} /> // SignIn page
-          <Route path="/signup" element={<SignUp />} /> // SignUp page
-          <Route path="/dashboard" element={<Home />} /> // Dashboard page
-          <Route path="/income" element={<Income />} /> // Income page
-          <Route path="/expense" element={<Expense />} /> // Expense page
-        </Routes>
-      </Router>
-    </div>
+    <UserProvider>
+      <div>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Root />} />
+            <Route path="/signin" element={<SignIn />} /> // SignIn page
+            <Route path="/signup" element={<SignUp />} /> // SignUp page
+            <Route path="/dashboard" element={<Home />} /> // Dashboard page
+            <Route path="/income" element={<Income />} /> // Income page
+            <Route path="/expense" element={<Expense />} /> // Expense page
+          </Routes>
+        </Router>
+      </div>
+    </UserProvider>
   );
 };
 
