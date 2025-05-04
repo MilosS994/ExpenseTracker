@@ -8,6 +8,7 @@ import connectDB from "./src/database/mongodb.js";
 import authRoutes from "./src/routes/auth.routes.js";
 import incomeRoutes from "./src/routes/income.routes.js";
 import expenseRoutes from "./src/routes/expense.routes.js";
+import dashboardRoutes from "./src/routes/dashboard.routes.js";
 // Error handling middleware
 import errorMiddleware from "./src/middlewares/error.middleware.js";
 
@@ -33,6 +34,7 @@ app.use(express.json());
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/income", incomeRoutes);
 app.use("/api/v1/expense", expenseRoutes);
+app.use("/api/v1/dashboard", dashboardRoutes);
 
 // Error handling middleware
 app.use(errorMiddleware);
