@@ -10,6 +10,9 @@ import { IoEyeOff } from "react-icons/io5";
 import AuthLayout from "../../components/layouts/AuthLayout";
 // Utils
 import { validateEmail } from "../../utils/helper.js";
+import axiosInstance from "../../utils/axiosInstance.js";
+// Paths
+import { API_PATHS } from "../../utils/apiPaths.js";
 
 // ---------------------------------------------------------------------------------
 
@@ -23,8 +26,8 @@ const Signin = () => {
 
   const navigate = useNavigate();
 
-  // Handle login function
-  const handleLogin = async (e) => {
+  // Handle signin function
+  const handleSignin = async (e) => {
     e.preventDefault();
     setError(null);
 
@@ -47,6 +50,28 @@ const Signin = () => {
       setError("Password must be at least 8 characters long");
       return;
     }
+
+    // Signin API call
+    try {
+      const response = await axiosInstance.post(API_PATHS.AUTH.SIGNIN, {
+        email,
+        password,
+      });
+      // Get token from the user in the response
+      const {
+        user: { token },
+      } = response.data;
+      if (token) {
+        localStorage.setItem("token", token); //Set token in the local storage
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        setError(error.response.data.message);
+      } else {
+        setError("Something went wrong");
+      }
+    }
   };
 
   // Show/Hide password function
@@ -64,7 +89,7 @@ const Signin = () => {
           Enter your credentials to sign in
         </p>
         <div>
-          <form className="flex flex-col gap-4" onSubmit={handleLogin}>
+          <form className="flex flex-col gap-4" onSubmit={handleSignin}>
             {/* Email */}
             <div className="flex flex-col gap-1">
               <label
