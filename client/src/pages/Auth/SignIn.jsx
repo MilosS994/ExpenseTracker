@@ -1,6 +1,6 @@
 // IMPORTS
 // React hooks
-import { useState } from "react";
+import { useContext, useState } from "react";
 // React router
 import { useNavigate, Link } from "react-router-dom";
 // React icons
@@ -13,6 +13,8 @@ import { validateEmail } from "../../utils/helper.js";
 import axiosInstance from "../../utils/axiosInstance.js";
 // Paths
 import { API_PATHS } from "../../utils/apiPaths.js";
+// userContext
+import { userContext } from "../../context/userContext";
 
 // ---------------------------------------------------------------------------------
 
@@ -23,6 +25,8 @@ const Signin = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+
+  const { updateUser } = useContext(userContext);
 
   const navigate = useNavigate();
 
@@ -58,11 +62,12 @@ const Signin = () => {
         password,
       });
       // Get token from the user in the response
-      const {
-        user: { token },
-      } = response.data;
+      const { user } = response.data;
+      const { token } = user;
+
       if (token) {
         localStorage.setItem("token", token); //Set token in the local storage
+        updateUser(user);
         navigate("/dashboard");
       }
     } catch (error) {
