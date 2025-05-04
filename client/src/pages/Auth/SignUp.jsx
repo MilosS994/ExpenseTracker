@@ -1,6 +1,6 @@
 // IMPORTS
 // React hooks
-import { useState } from "react";
+import { useContext, useState } from "react";
 // React router
 import { useNavigate, Link } from "react-router-dom";
 // React icons
@@ -10,9 +10,13 @@ import { IoEyeOff } from "react-icons/io5";
 import AuthLayout from "../../components/layouts/AuthLayout";
 // Utils
 import { validateEmail } from "../../utils/helper.js";
+import axiosInstance from "../../utils/axiosInstance.js";
+import { API_PATHS } from "../../utils/apiPaths.js";
+import uploadImage from "../../utils/uploadImage.js";
 // Profile photo selector component
 import ProfilePhotoSelector from "../../components/ProfilePhotoSelector.jsx";
-
+// userContext
+import { UserContext } from "../../context/UserContext.jsx";
 // ---------------------------------------------------------------------------------
 
 const Signup = () => {
@@ -24,6 +28,8 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(null);
+
+  const { updateUser } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -67,6 +73,38 @@ const Signup = () => {
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
+    }
+
+    // Signup API call
+    try {
+      // Upload image
+      if (profilePicture) {
+        const imgUploadRes = await uploadImage(profilePicture);
+        profileImageUrl = imgUploadRes.imageUrl || "";
+      }
+
+      const response = await axiosInstance.post(API_PATHS.AUTH.SIGNUP, {
+        fullName,
+        email,
+        password,
+        profileImageUrl,
+      });
+
+      // Get token from the user in the response
+      const { user } = response.data;
+      const { token } = user;
+
+      if (token) {
+        localStorage.setItem("token", token);
+        updateUser(user);
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        setError(error.response.data.message);
+      } else {
+        setError("Something went wrong");
+      }
     }
   };
 
@@ -143,6 +181,12 @@ const Signup = () => {
                 }`}
               />
               {error?.toLowerCase().includes("email") && (
+                <p className="text-red-300 font-semibold text-xs mt-1 md:text-sm lg:text-base md:mt-2 cursor-default">
+                  {error}
+                </p>
+              )}
+              {/* Error in case user already exists */}
+              {error?.toLowerCase().includes("exists") && (
                 <p className="text-red-300 font-semibold text-xs mt-1 md:text-sm lg:text-base md:mt-2 cursor-default">
                   {error}
                 </p>
