@@ -32,7 +32,7 @@ axiosInstance.interceptors.response.use(
   (error) => {
     if (error.response) {
       if (error.response.status === 401) {
-        window.location.href = "/signin";
+        console.error("Session expired, please log in again.");
       } else if (error.response.status === 500) {
         console.error("Server error. Try again later.");
       } else if (error.code === "ECONNABORTED") {
