@@ -49,11 +49,6 @@ const Signin = () => {
       return;
     }
 
-    if (password.length < 8) {
-      setError("Password must be at least 8 characters long");
-      return;
-    }
-
     // Signin API call
     try {
       const response = await axiosInstance.post(API_PATHS.AUTH.SIGNIN, {
@@ -162,7 +157,8 @@ const Signin = () => {
                 }`}
               />
 
-              {error?.toLowerCase().includes("password") && (
+              {(error?.toLowerCase().includes("password") ||
+                error?.toLowerCase().includes("credentials")) && (
                 <p className="text-red-300 font-semibold text-xs mt-1 md:text-sm lg:text-base md:mt-2 cursor-default">
                   {error}
                 </p>
